@@ -14,12 +14,14 @@ public class Arena {
 		playersA.ordenar();
 		playersB.ordenar();
 		
+		System.out.println("\n=== BATALHA DE ARENA ===");
+		
 		if (totalP1 > totalP2) {
-			System.out.println("Grupo 1 venceu! " + "Poder Total: " + totalP1);
+			System.out.println("\nGrupo 1 venceu! " + "Poder Total: " + totalP1);
 		} else if (totalP1 < totalP2) {
-			System.out.println("Grupo 2 venceu! " + "Poder Total: " + totalP2);
+			System.out.println("\nGrupo 2 venceu! " + "Poder Total: " + totalP2);
 		} else {
-			System.out.println("Grupos empataram!");
+			System.out.println("\nGrupos empataram!");
 		}
 	}
 }

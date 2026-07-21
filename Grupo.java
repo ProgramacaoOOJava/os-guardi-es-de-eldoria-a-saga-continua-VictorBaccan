@@ -22,9 +22,10 @@ public class Grupo {
 	public void listarMembros() {
 		System.out.println("\n--- Membros do Grupo " + nomeGrupo + " --- ");
 		
-		for (Personagem personagems : membros) {
-			System.out.println(personagems.exibirStatus());
-			personagems.usarHabilidadeEspecial();
+		for (Personagem personagem : membros) {
+			System.out.println(personagem);
+			System.out.println(personagem.getNome() + " Usou " + personagem.usarHabilidadeEspecial());
+			System.out.println(personagem.instanciaPersonagem(personagem));
 		}
 		
 		System.out.println(" ---------------------------------- ");
@@ -33,16 +34,16 @@ public class Grupo {
 	public void batalhar(Personagem p1, Personagem p2) {
 		System.out.println("\n --- Inicio da Batalha ---\n");
 		
-		double poderTotalp1 = p1.nivel * p1.poderBase;
-		double poderTotalp2 = p2.nivel * p2.poderBase;
+		double poderTotalp1 = p1.getNivel() * p1.getPoderBase();
+		double poderTotalp2 = p2.getNivel() * p2.getPoderBase();
 		
-		System.out.println(p1.nome + " Poder Total: " + String.format("%.2f", poderTotalp1));
-		System.out.println(p2.nome + " Poder Total: " + String.format("%.2f\n", poderTotalp2));
+		System.out.println(p1.getNome() + " Poder Total: " + String.format("%.2f", poderTotalp1));
+		System.out.println(p2.getNome() + " Poder Total: " + String.format("%.2f\n", poderTotalp2));
 		
 		if (poderTotalp1 > poderTotalp2) {
-			System.out.println(p1.nome + " venceu a batalha!" + " Poder Total: " + poderTotalp1);
+			System.out.println(p1.getNome() + " venceu a batalha!" + " Poder Total: " + poderTotalp1);
 		} else if (poderTotalp1 < poderTotalp2) {
-			System.out.println(p2.nome + " venceu a batalha!" + " Poder Total: " + poderTotalp2);
+			System.out.println(p2.getNome() + " venceu a batalha!" + " Poder Total: " + poderTotalp2);
 		} else {
 			System.out.println(" a batalha empatou!");
 		}
@@ -53,8 +54,8 @@ public class Grupo {
 	public double getPoderTotal() {
 		double totalPoder = 0;
 		
-		for (Personagem personagems : membros) {
-			totalPoder += personagems.nivel * personagems.poderBase;
+		for (Personagem personagem : membros) {
+			totalPoder += personagem.getNivel() * personagem.getPoderBase();
 		}
 		
 		return totalPoder;

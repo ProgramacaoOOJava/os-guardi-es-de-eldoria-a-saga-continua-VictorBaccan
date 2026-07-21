@@ -1,9 +1,11 @@
+import java.util.Objects;
+
 public abstract class Personagem implements Comparable<Personagem>{
-	String nome;
-	String classe;
-	int nivel;
-	int vida;
-	double poderBase;
+	private String nome;
+	private String classe;
+	private int nivel;
+	private int vida;
+	private double poderBase;
 	
 //	CRIAÇÃO DO CONSTRUTOR DA CLASSE PERSONAGEM
 	public Personagem(String nome, String classe, int nivel, int vida, double poderBase) {
@@ -12,6 +14,26 @@ public abstract class Personagem implements Comparable<Personagem>{
 		this.nivel = nivel; 
 		this.vida = vida;
 		this.poderBase = poderBase;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public String getClasse() {
+		return classe;
+	}
+	
+	public int getNivel() {
+		return nivel;
+	}
+	
+	public int getVida() {
+		return vida;
+	}
+	
+	public double getPoderBase() {
+		return poderBase;
 	}
 	
 	public int compareTo(Personagem outro) {
@@ -24,15 +46,40 @@ public abstract class Personagem implements Comparable<Personagem>{
 		}
 	}
 	
-	@Override
-	public String toString() {
-		return "Personagem: " + nome; 
+//	DEFINE O QUE EXIBIR COM INSTANCEOF PARA CADA CLASSE DE PERSONAGEM
+	public String instanciaPersonagem(Personagem p) {
+		String stringTexto = "";
+		
+		if (p instanceof Mago) {
+			stringTexto = "O personagem " + p.getNome() + " é um Mago de nivel " + 
+		p.getNivel();
+		} else if (p instanceof Guerreiro) {
+			stringTexto = "O personagem " + p.getNome() + " é um Guerreiro de nivel " +
+		p.getNivel() + "\n";
+		}
+		return stringTexto;
 	}
 	
-	public String exibirStatus() {
-		return "Nome: " + nome + "\nClasse: " + classe + "\nNivel: " + nivel + 
+	@Override
+	public String toString() {
+		return "Personagem: " + nome + "\nClasse: " + classe + "\nNivel: " + nivel + 
 				"\nVida: " + vida + "\nPoder Base: " + poderBase;
 	}
 	
-	public abstract void usarHabilidadeEspecial();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null || getClass() != obj.getClass()) return false;
+		
+		Personagem func = (Personagem) obj;
+		return Objects.equals(nome, func.nome) &&
+			   Objects.equals(classe, func.classe);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(nome, classe);
+	}
+	
+	public abstract String usarHabilidadeEspecial();
 }
