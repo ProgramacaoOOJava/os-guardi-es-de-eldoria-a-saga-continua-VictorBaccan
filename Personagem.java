@@ -16,6 +16,16 @@ public abstract class Personagem implements Comparable<Personagem>{
 		this.poderBase = poderBase;
 	}
 	
+	protected void atribuirBencao(double valor) {
+		if (valor > 0) {
+			poderBase += valor;
+			System.out.println("\nBônus de " + valor +
+					" atribuido a " + nome + ". Novo Poder Base: " + poderBase + "\n");
+		} else {
+			System.out.println("\nErro: Valor do bônus deve ser positivo!" + "\n");
+		}
+	}
+	
 	public String getNome() {
 		return nome;
 	}

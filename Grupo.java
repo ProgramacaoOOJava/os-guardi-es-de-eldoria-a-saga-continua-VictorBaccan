@@ -24,8 +24,17 @@ public class Grupo {
 		
 		for (Personagem personagem : membros) {
 			System.out.println(personagem);
-			System.out.println(personagem.getNome() + " Usou " + personagem.usarHabilidadeEspecial());
+			System.out.println(personagem.getNome() + personagem.usarHabilidadeEspecial());
 			System.out.println(personagem.instanciaPersonagem(personagem));
+			if (personagem instanceof Mago) {
+				((Mago) personagem).registrarAcao("Mago descansou para regenerar mana.");
+				
+				Auditavel personagemMago = (Auditavel) personagem;
+				
+				personagemMago.auditarAcoes();
+				
+				personagem.atribuirBencao(20);
+			}
 		}
 		
 		System.out.println(" ---------------------------------- ");

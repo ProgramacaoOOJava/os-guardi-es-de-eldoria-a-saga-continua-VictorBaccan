@@ -47,5 +47,9 @@ public class Main {
 			System.out.println(char1.getNome() + " HashCode: " + char1.hashCode());
 			System.out.println(char2.getNome() + " HashCode: " + char2.hashCode());
 		}
+		
+//		LISTANDO GRUPOS NOVAMENTE (NOVOS VALORES)
+		grupoA.listarMembros();
+		grupoB.listarMembros();
 	}
 }
